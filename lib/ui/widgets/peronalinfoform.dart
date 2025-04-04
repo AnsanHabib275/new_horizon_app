@@ -2,7 +2,7 @@
 
 import 'dart:developer';
 
-import 'package:csc_picker/csc_picker.dart';
+// import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -34,45 +34,45 @@ class PersonalInforForm extends StatefulWidget {
   final num totalprice;
   final String company;
 
-  const PersonalInforForm(
-      {super.key,
-      required GlobalKey<FormState> formKey,
-      required TextEditingController emailController,
-      required TextEditingController countryController,
-      required TextEditingController firstnameController,
-      required TextEditingController lastnameController,
-      required TextEditingController shippingController,
-      required TextEditingController cityController,
-      required TextEditingController postalController,
-      required TextEditingController phoneController,
-      required TextEditingController billingController,
-      required TextEditingController billingfnmController,
-      required TextEditingController billinglnmController,
-      required TextEditingController billingbphnnumController,
-      required TextEditingController billingpostalcodeController,
-      required TextEditingController notecontroller,
-      required this.verifiedPatients,
-      required TextEditingController billingcityController,
-      required this.totalprice,
-      required this.company,
-      bool checkBoxValue = false,
-      required this.pateintname})
-      : _formKey = formKey,
-        email = emailController,
-        country = countryController,
-        firstname = firstnameController,
-        lastname = lastnameController,
-        shippingaddress = shippingController,
-        billingaddress = billingController,
-        citypicker = cityController,
-        postalcode = postalController,
-        phonenumber = phoneController,
-        billingfname = billingfnmController,
-        billinglname = billinglnmController,
-        billingcity = billingcityController,
-        note = notecontroller,
-        billing_phone_number = billingbphnnumController,
-        billingpostalcode = billingpostalcodeController;
+  const PersonalInforForm({
+    super.key,
+    required GlobalKey<FormState> formKey,
+    required TextEditingController emailController,
+    required TextEditingController countryController,
+    required TextEditingController firstnameController,
+    required TextEditingController lastnameController,
+    required TextEditingController shippingController,
+    required TextEditingController cityController,
+    required TextEditingController postalController,
+    required TextEditingController phoneController,
+    required TextEditingController billingController,
+    required TextEditingController billingfnmController,
+    required TextEditingController billinglnmController,
+    required TextEditingController billingbphnnumController,
+    required TextEditingController billingpostalcodeController,
+    required TextEditingController notecontroller,
+    required this.verifiedPatients,
+    required TextEditingController billingcityController,
+    required this.totalprice,
+    required this.company,
+    bool checkBoxValue = false,
+    required this.pateintname,
+  }) : _formKey = formKey,
+       email = emailController,
+       country = countryController,
+       firstname = firstnameController,
+       lastname = lastnameController,
+       shippingaddress = shippingController,
+       billingaddress = billingController,
+       citypicker = cityController,
+       postalcode = postalController,
+       phonenumber = phoneController,
+       billingfname = billingfnmController,
+       billinglname = billinglnmController,
+       billingcity = billingcityController,
+       note = notecontroller,
+       billing_phone_number = billingbphnnumController,
+       billingpostalcode = billingpostalcodeController;
 
   @override
   State<PersonalInforForm> createState() => _PersonalInforFormState();
@@ -92,12 +92,12 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
   TextEditingController patientnam = TextEditingController();
 
   void _showVerifiedPatientsBottomSheet(
-      BuildContext context, List<VerifiedPatient> verifiedPatients) {
+    BuildContext context,
+    List<VerifiedPatient> verifiedPatients,
+  ) {
     showModalBottomSheet(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       elevation: 2,
@@ -129,9 +129,7 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SizedBox(
-                              height: 3,
-                            ),
+                            SizedBox(height: 3),
                             Text(
                               'Policy Number: ${verifiedPatients[index].policyNumber}',
                               style: TextStyle(
@@ -140,9 +138,7 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                                     heights <= 690 && widths <= 430 ? 12 : 16,
                               ),
                             ),
-                            SizedBox(
-                              height: 3,
-                            ),
+                            SizedBox(height: 3),
                             Text(
                               'Date of Service: ${formatDate(verifiedPatients[index].date_of_service)}',
                               style: TextStyle(
@@ -161,9 +157,7 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                         },
                       ),
                     ),
-                    Divider(
-                      thickness: 3,
-                    )
+                    Divider(thickness: 3),
                   ],
                 );
               },
@@ -199,20 +193,22 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
     FocusNode myFocusNode = new FocusNode();
 
     return WillPopScope(
-        onWillPop: () async {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => HomeScreen(initialIndex: 1)),
-          );
-          return true;
-        },
-        child: Form(
-          key: widget._formKey,
-          child: Column(children: [
+      onWillPop: () async {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen(initialIndex: 1)),
+        );
+        return true;
+      },
+      child: Form(
+        key: widget._formKey,
+        child: Column(
+          children: [
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.04, right: Get.width * 0.05),
+                top: Get.height * 0.04,
+                right: Get.width * 0.05,
+              ),
               child: Stack(
                 alignment: Alignment.centerRight,
                 children: [
@@ -220,25 +216,32 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                     controller: patientnam,
                     onTap: () {
                       _showVerifiedPatientsBottomSheet(
-                          context, widget.verifiedPatients);
+                        context,
+                        widget.verifiedPatients,
+                      );
                     },
                     readOnly: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: Colors.black)),
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Colors.black),
+                      ),
                       focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide:
-                              const BorderSide(color: appcolor.textColor)),
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: appcolor.textColor),
+                      ),
                       hintText: "Verified Patients",
                       labelText: "Verified Patients",
                       labelStyle: TextStyle(
-                          color: myFocusNode.hasFocus
-                              ? const Color.fromARGB(255, 85, 85, 85)
-                              : appcolor.textblack),
+                        color:
+                            myFocusNode.hasFocus
+                                ? const Color.fromARGB(255, 85, 85, 85)
+                                : appcolor.textblack,
+                      ),
                       contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                        horizontal: 20,
+                        vertical: 20,
+                      ),
                     ),
                   ),
                   IconButton(
@@ -254,14 +257,19 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
 
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => (value!.isEmpty ||
-                        !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                            .hasMatch(value)
-                    ? 'Email not Valid'
-                    : null),
+                validator:
+                    (value) =>
+                        (value!.isEmpty ||
+                                !RegExp(
+                                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                                ).hasMatch(value)
+                            ? 'Email not Valid'
+                            : null),
                 onChanged: (text) {
                   print('text $text');
                 },
@@ -271,20 +279,27 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                 autocorrect: false,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textblack)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textblack),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 30, 31, 31))),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 30, 31, 31),
+                    ),
+                  ),
                   hintText: "Email",
                   labelText: "Email",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
@@ -313,9 +328,7 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
             Row(
               children: const [
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: 8.0,
-                  ),
+                  padding: EdgeInsets.only(top: 8.0),
                   child: Text(
                     'Company Details ',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
@@ -325,7 +338,9 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 // readOnly: true,
                 // enabled: false,
@@ -334,18 +349,25 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textblack)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textblack),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 30, 31, 31))),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 30, 31, 31),
+                    ),
+                  ),
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? Color.fromARGB(255, 0, 0, 0)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? Color.fromARGB(255, 0, 0, 0)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
@@ -474,107 +496,138 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
             // ),
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autocorrect: false,
                 autofocus: false,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) =>
-                    (value!.isEmpty ? 'First Name cannot be blank' : null),
+                validator:
+                    (value) =>
+                        (value!.isEmpty ? 'First Name cannot be blank' : null),
                 onChanged: (text) {
                   print('text $text');
                 },
                 controller: widget.firstname,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textColor)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textColor),
+                  ),
                   hintText: "First Name",
                   labelText: "First Name",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autocorrect: false,
                 autofocus: false,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) =>
-                    (value!.isEmpty ? 'Last Name cannot be blank' : null),
+                validator:
+                    (value) =>
+                        (value!.isEmpty ? 'Last Name cannot be blank' : null),
                 onChanged: (text) {
                   print('text $text');
                 },
                 controller: widget.lastname,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textColor)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textColor),
+                  ),
                   hintText: "Last Name",
                   labelText: "Last Name",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autocorrect: false,
                 autofocus: false,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => (value!.isEmpty
-                    ? 'Shipping Address cannot be blank'
-                    : null),
+                validator:
+                    (value) =>
+                        (value!.isEmpty
+                            ? 'Shipping Address cannot be blank'
+                            : null),
                 onChanged: (text) {
                   print('text $text');
                 },
                 controller: widget.shippingaddress,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textColor)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textColor),
+                  ),
                   hintText: "Shipping Address",
                   labelText: "Shipping Address",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autocorrect: false,
                 autofocus: false,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) =>
-                    (value!.isEmpty ? 'Postal Code cannot be blank' : null),
+                validator:
+                    (value) =>
+                        (value!.isEmpty ? 'Postal Code cannot be blank' : null),
                 onChanged: (text) {
                   print('text $text');
                 },
@@ -582,26 +635,34 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                 controller: widget.postalcode,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textColor)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textColor),
+                  ),
                   hintText: "Postal Code",
                   labelText: "Postal Code",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
 
             Padding(
               padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
+                top: Get.height * 0.015,
+                right: Get.width * 0.05,
+              ),
               child: TextFormField(
                 autocorrect: false,
                 autofocus: false,
@@ -617,108 +678,114 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
 
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Colors.black),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: appcolor.textColor)),
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: appcolor.textColor),
+                  ),
                   hintText: "Phone Number",
                   labelText: "Phone Number",
                   labelStyle: TextStyle(
-                      color: myFocusNode.hasFocus
-                          ? const Color.fromARGB(255, 85, 85, 85)
-                          : appcolor.textblack),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    color:
+                        myFocusNode.hasFocus
+                            ? const Color.fromARGB(255, 85, 85, 85)
+                            : appcolor.textblack,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: Get.height * 0.015, right: Get.width * 0.05),
-              child: CSCPicker(
-                showStates: true,
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //       top: Get.height * 0.015, right: Get.width * 0.05),
+            //   child: CSCPicker(
+            //     showStates: true,
+            //
+            //     showCities: true,
+            //
+            //     flagState: CountryFlag.DISABLE,
+            //
+            //     dropdownDecoration: BoxDecoration(
+            //         borderRadius: const BorderRadius.all(Radius.circular(10)),
+            //         color: Colors.white,
+            //         border: Border.all(color: Colors.grey.shade300, width: 1)),
+            //
+            //     disabledDropdownDecoration: BoxDecoration(
+            //         borderRadius: const BorderRadius.all(Radius.circular(10)),
+            //         color: Colors.grey.shade300,
+            //         border: Border.all(color: Colors.grey.shade300, width: 1)),
+            //
+            //     countrySearchPlaceholder: "Country",
+            //     stateSearchPlaceholder: "State",
+            //     citySearchPlaceholder: "City",
+            //
+            //     countryDropdownLabel: "Country",
+            //     stateDropdownLabel: "State",
+            //     cityDropdownLabel: "City",
+            //
+            //     ///Default Country
+            //     // defaultCountry: CscCountry.United_States,
+            //
+            //     ///Country Filter [OPTIONAL PARAMETER]
+            //     countryFilter: const [
+            //       // CscCountry.India,
+            //       CscCountry.United_States,
+            //       // CscCountry.Canada,
+            //       // CscCountry.American_Samoa
+            //     ],
+            //
+            //     ///Disable country dropdown (Note: use it with default country)
+            //     // disableCountry: true,
+            //
+            //     ///selected item style [OPTIONAL PARAMETER]
+            //     selectedItemStyle: const TextStyle(
+            //       color: Colors.black,
+            //       fontSize: 14,
+            //     ),
+            //
+            //     ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+            //     dropdownHeadingStyle: const TextStyle(
+            //         color: Colors.black,
+            //         fontSize: 17,
+            //         fontWeight: FontWeight.bold),
+            //
+            //     ///DropdownDialog Item style [OPTIONAL PARAMETER]
+            //     dropdownItemStyle: const TextStyle(
+            //       color: Colors.black,
+            //       fontSize: 14,
+            //     ),
+            //
+            //     ///Dialog box radius [OPTIONAL PARAMETER]
+            //     dropdownDialogRadius: 10.0,
+            //
+            //     ///Search bar radius [OPTIONAL PARAMETER]
+            //     searchBarRadius: 10.0,
+            //
+            //     onCountryChanged: (value) {
+            //       setState(() {
+            //         countryValue = value;
+            //       });
+            //     },
+            //
+            //     onStateChanged: (value) {
+            //       setState(() {
+            //         stateValue = value ?? "";
+            //       });
+            //     },
+            //     onCityChanged: (value) {
+            //       setState(() {
+            //         cityValue = value ?? "";
+            //       });
+            //     },
+            //   ),
+            // ),
 
-                showCities: true,
-
-                flagState: CountryFlag.DISABLE,
-
-                dropdownDecoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade300, width: 1)),
-
-                disabledDropdownDecoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: Colors.grey.shade300,
-                    border: Border.all(color: Colors.grey.shade300, width: 1)),
-
-                countrySearchPlaceholder: "Country",
-                stateSearchPlaceholder: "State",
-                citySearchPlaceholder: "City",
-
-                countryDropdownLabel: "Country",
-                stateDropdownLabel: "State",
-                cityDropdownLabel: "City",
-
-                ///Default Country
-                // defaultCountry: CscCountry.United_States,
-
-                ///Country Filter [OPTIONAL PARAMETER]
-                countryFilter: const [
-                  // CscCountry.India,
-                  CscCountry.United_States,
-                  // CscCountry.Canada,
-                  // CscCountry.American_Samoa
-                ],
-
-                ///Disable country dropdown (Note: use it with default country)
-                // disableCountry: true,
-
-                ///selected item style [OPTIONAL PARAMETER]
-                selectedItemStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),
-
-                ///DropdownDialog Heading style [OPTIONAL PARAMETER]
-                dropdownHeadingStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
-
-                ///DropdownDialog Item style [OPTIONAL PARAMETER]
-                dropdownItemStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),
-
-                ///Dialog box radius [OPTIONAL PARAMETER]
-                dropdownDialogRadius: 10.0,
-
-                ///Search bar radius [OPTIONAL PARAMETER]
-                searchBarRadius: 10.0,
-
-                onCountryChanged: (value) {
-                  setState(() {
-                    countryValue = value;
-                  });
-                },
-
-                onStateChanged: (value) {
-                  setState(() {
-                    stateValue = value ?? "";
-                  });
-                },
-                onCityChanged: (value) {
-                  setState(() {
-                    cityValue = value ?? "";
-                  });
-                },
-              ),
-            ),
-
-//  -- BILLLING INFO STARTS HERE --
+            //  -- BILLLING INFO STARTS HERE --
             Column(
               children: [
                 Row(
@@ -807,7 +874,9 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                 if (_character == SingingCharacter.schedule)
                   Padding(
                     padding: EdgeInsets.only(
-                        top: Get.height * 0.005, right: Get.width * 0.05),
+                      top: Get.height * 0.005,
+                      right: Get.width * 0.05,
+                    ),
                     child: Stack(
                       alignment: Alignment.centerRight,
                       children: [
@@ -835,29 +904,37 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                           readOnly: true,
                           controller: sche,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isEmpty
-                              ? 'Schedule Date cannot be blank'
-                              : null),
+                          validator:
+                              (value) =>
+                                  (value!.isEmpty
+                                      ? 'Schedule Date cannot be blank'
+                                      : null),
                           onChanged: (text) {
                             print('text $text');
                           },
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "Scheduled Date",
                             labelText: "Scheduled Date",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                         IconButton(
@@ -873,129 +950,163 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                       Row(
                         children: const [
                           Padding(
-                            padding: EdgeInsets.only(
-                              top: 16.0,
-                            ),
+                            padding: EdgeInsets.only(top: 16.0),
                             child: Text(
                               'Billing Details ',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
+                          top: Get.height * 0.015,
+                          right: Get.width * 0.05,
+                        ),
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isEmpty
-                              ? 'First Name cannot be blank'
-                              : null),
+                          validator:
+                              (value) =>
+                                  (value!.isEmpty
+                                      ? 'First Name cannot be blank'
+                                      : null),
                           onChanged: (text) {
                             print('text $text');
                           },
                           controller: widget.billingfname,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "First Name",
                             labelText: "First Name",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
+                          top: Get.height * 0.015,
+                          right: Get.width * 0.05,
+                        ),
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isEmpty
-                              ? 'Last Name cannot be blank'
-                              : null),
+                          validator:
+                              (value) =>
+                                  (value!.isEmpty
+                                      ? 'Last Name cannot be blank'
+                                      : null),
                           onChanged: (text) {
                             print('text $text');
                           },
                           controller: widget.billinglname,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "Last Name",
                             labelText: "Last Name",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
+                          top: Get.height * 0.015,
+                          right: Get.width * 0.05,
+                        ),
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isEmpty
-                              ? 'Billing Address cannot be blank'
-                              : null),
+                          validator:
+                              (value) =>
+                                  (value!.isEmpty
+                                      ? 'Billing Address cannot be blank'
+                                      : null),
                           onChanged: (text) {
                             print('text $text');
                           },
                           controller: widget.billingaddress,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "Billing Address",
                             labelText: "Billing Address",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
+                          top: Get.height * 0.015,
+                          right: Get.width * 0.05,
+                        ),
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => (value!.isEmpty
-                              ? 'Postal Code cannot be blank'
-                              : null),
+                          validator:
+                              (value) =>
+                                  (value!.isEmpty
+                                      ? 'Postal Code cannot be blank'
+                                      : null),
                           onChanged: (text) {
                             print('text $text');
                           },
@@ -1003,27 +1114,35 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                           controller: widget.billingpostalcode,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "Postal Code",
                             labelText: "Postal Code",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
+                          top: Get.height * 0.015,
+                          right: Get.width * 0.05,
+                        ),
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
@@ -1035,112 +1154,118 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide:
-                                    const BorderSide(color: Colors.black)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.black),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(
-                                    color: appcolor.textColor)),
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(
+                                color: appcolor.textColor,
+                              ),
+                            ),
                             hintText: "Phone Number",
                             labelText: "Phone Number",
                             labelStyle: TextStyle(
-                                color: myFocusNode.hasFocus
-                                    ? const Color.fromARGB(255, 85, 85, 85)
-                                    : appcolor.textblack),
+                              color:
+                                  myFocusNode.hasFocus
+                                      ? const Color.fromARGB(255, 85, 85, 85)
+                                      : appcolor.textblack,
+                            ),
                             contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: Get.height * 0.015, right: Get.width * 0.05),
-                        child: CSCPicker(
-                          showStates: true,
-
-                          showCities: true,
-
-                          flagState: CountryFlag.DISABLE,
-
-                          dropdownDecoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Colors.white,
-                              border: Border.all(
-                                  color: Colors.grey.shade300, width: 1)),
-
-                          disabledDropdownDecoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Colors.grey.shade300,
-                              border: Border.all(
-                                  color: Colors.grey.shade300, width: 1)),
-
-                          countrySearchPlaceholder: "Country",
-                          stateSearchPlaceholder: "State",
-                          citySearchPlaceholder: "City",
-
-                          countryDropdownLabel: "Country",
-                          stateDropdownLabel: "State",
-                          cityDropdownLabel: "City",
-
-                          ///Default Country
-                          // defaultCountry: CscCountry.United_States,
-
-                          ///Country Filter [OPTIONAL PARAMETER]
-                          countryFilter: const [
-                            // CscCountry.India,
-                            CscCountry.United_States,
-                            // CscCountry.Canada,
-                            // CscCountry.American_Samoa
-                          ],
-
-                          ///Disable country dropdown (Note: use it with default country)
-                          // disableCountry: true,
-
-                          ///selected item style [OPTIONAL PARAMETER]
-                          selectedItemStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-
-                          ///DropdownDialog Heading style [OPTIONAL PARAMETER]
-                          dropdownHeadingStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
-
-                          ///DropdownDialog Item style [OPTIONAL PARAMETER]
-                          dropdownItemStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-
-                          ///Dialog box radius [OPTIONAL PARAMETER]
-                          dropdownDialogRadius: 10.0,
-
-                          ///Search bar radius [OPTIONAL PARAMETER]
-                          searchBarRadius: 10.0,
-
-                          onCountryChanged: (value) {
-                            setState(() {
-                              billingcountryValue = value;
-                            });
-                          },
-
-                          onStateChanged: (value) {
-                            setState(() {
-                              billingstateValue = value ?? "";
-                            });
-                          },
-                          onCityChanged: (value) {
-                            setState(() {
-                              billingcityValue = value ?? "";
-                            });
-                          },
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(
+                      //       top: Get.height * 0.015, right: Get.width * 0.05),
+                      //   child: CSCPicker(
+                      //     showStates: true,
+                      //
+                      //     showCities: true,
+                      //
+                      //     flagState: CountryFlag.DISABLE,
+                      //
+                      //     dropdownDecoration: BoxDecoration(
+                      //         borderRadius:
+                      //             const BorderRadius.all(Radius.circular(10)),
+                      //         color: Colors.white,
+                      //         border: Border.all(
+                      //             color: Colors.grey.shade300, width: 1)),
+                      //
+                      //     disabledDropdownDecoration: BoxDecoration(
+                      //         borderRadius:
+                      //             const BorderRadius.all(Radius.circular(10)),
+                      //         color: Colors.grey.shade300,
+                      //         border: Border.all(
+                      //             color: Colors.grey.shade300, width: 1)),
+                      //
+                      //     countrySearchPlaceholder: "Country",
+                      //     stateSearchPlaceholder: "State",
+                      //     citySearchPlaceholder: "City",
+                      //
+                      //     countryDropdownLabel: "Country",
+                      //     stateDropdownLabel: "State",
+                      //     cityDropdownLabel: "City",
+                      //
+                      //     ///Default Country
+                      //     // defaultCountry: CscCountry.United_States,
+                      //
+                      //     ///Country Filter [OPTIONAL PARAMETER]
+                      //     countryFilter: const [
+                      //       // CscCountry.India,
+                      //       CscCountry.United_States,
+                      //       // CscCountry.Canada,
+                      //       // CscCountry.American_Samoa
+                      //     ],
+                      //
+                      //     ///Disable country dropdown (Note: use it with default country)
+                      //     // disableCountry: true,
+                      //
+                      //     ///selected item style [OPTIONAL PARAMETER]
+                      //     selectedItemStyle: const TextStyle(
+                      //       color: Colors.black,
+                      //       fontSize: 14,
+                      //     ),
+                      //
+                      //     ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+                      //     dropdownHeadingStyle: const TextStyle(
+                      //         color: Colors.black,
+                      //         fontSize: 17,
+                      //         fontWeight: FontWeight.bold),
+                      //
+                      //     ///DropdownDialog Item style [OPTIONAL PARAMETER]
+                      //     dropdownItemStyle: const TextStyle(
+                      //       color: Colors.black,
+                      //       fontSize: 14,
+                      //     ),
+                      //
+                      //     ///Dialog box radius [OPTIONAL PARAMETER]
+                      //     dropdownDialogRadius: 10.0,
+                      //
+                      //     ///Search bar radius [OPTIONAL PARAMETER]
+                      //     searchBarRadius: 10.0,
+                      //
+                      //     onCountryChanged: (value) {
+                      //       setState(() {
+                      //         billingcountryValue = value;
+                      //       });
+                      //     },
+                      //
+                      //     onStateChanged: (value) {
+                      //       setState(() {
+                      //         billingstateValue = value ?? "";
+                      //       });
+                      //     },
+                      //     onCityChanged: (value) {
+                      //       setState(() {
+                      //         billingcityValue = value ?? "";
+                      //       });
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
               ],
@@ -1160,28 +1285,31 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                     controller: widget.note,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: Colors.black)),
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Colors.black),
+                      ),
                       focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: Colors.black)),
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Colors.black),
+                      ),
                       hintText: "Note ",
                       // labelText: "Email",
                       labelText: "Note",
                       contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                        horizontal: 20,
+                        vertical: 20,
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: Get.height * 0.019,
-                ),
+                SizedBox(height: Get.height * 0.019),
                 GestureDetector(
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HomeScreen(initialIndex: 1)),
+                        builder: (context) => HomeScreen(initialIndex: 1),
+                      ),
                     );
                   },
                   child: Row(
@@ -1190,70 +1318,75 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                       Text(
                         'Return to Cart',
                         style: TextStyle(
-                            fontFamily: 'Humanist Sans',
-                            color: Color.fromARGB(255, 69, 69, 69),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14),
+                          fontFamily: 'Humanist Sans',
+                          color: Color.fromARGB(255, 69, 69, 69),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
+                SizedBox(height: Get.height * 0.02),
                 Padding(
                   padding: EdgeInsets.only(
-                      left: Get.width * 0.015, right: Get.width * 0.05),
+                    left: Get.width * 0.015,
+                    right: Get.width * 0.05,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Total Amount',
                         style: TextStyle(
-                            color: Colors.grey,
-                            fontFamily: 'Humanist Sans',
-                            fontSize: 16),
+                          color: Colors.grey,
+                          fontFamily: 'Humanist Sans',
+                          fontSize: 16,
+                        ),
                       ),
                       Text(
                         '$val',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 52, 52, 52),
-                            fontFamily: 'Humanist Sans',
-                            fontSize: 17),
+                          color: Color.fromARGB(255, 52, 52, 52),
+                          fontFamily: 'Humanist Sans',
+                          fontSize: 17,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: Get.width * 0.05),
-                  child: Divider(
-                    color: Color.fromARGB(255, 104, 104, 104),
-                  ),
+                  child: Divider(color: Color.fromARGB(255, 104, 104, 104)),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 Padding(
                   padding: EdgeInsets.only(
-                      left: Get.width * 0.015, right: Get.width * 0.05),
+                    left: Get.width * 0.015,
+                    right: Get.width * 0.05,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         '',
                         style: TextStyle(
-                            color: Colors.grey,
-                            fontFamily: 'Humanist Sans',
-                            fontSize: 16),
+                          color: Colors.grey,
+                          fontFamily: 'Humanist Sans',
+                          fontSize: 16,
+                        ),
                       ),
                       Container(
                         height: Get.height * 0.045,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            gradient: LinearGradient(colors: const [
+                          borderRadius: BorderRadius.circular(5),
+                          gradient: LinearGradient(
+                            colors: const [
                               appcolor.textColor,
-                              Color.fromARGB(255, 164, 199, 255)
-                            ])),
+                              Color.fromARGB(255, 164, 199, 255),
+                            ],
+                          ),
+                        ),
                         child: ElevatedButton(
                           onPressed: () async {
                             if (!widget._formKey.currentState!.validate()) {
@@ -1265,76 +1398,83 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                             if (checkBoxValue3 == true) {
                               Map<String, dynamic>? responseData =
                                   await CreateOrder.Createneworder(
-                                      widget.email.text,
-                                      widget.pateintname.text,
-                                      stateValue,
-                                      // widget.country.text,
-                                      widget.firstname.text,
-                                      widget.lastname.text,
-                                      widget.shippingaddress.text,
-                                      widget.shippingaddress.text,
-                                      // widget.citypicker.text,
-                                      cityValue,
-                                      widget.postalcode.text,
-                                      widget.phonenumber.text,
-                                      val!.toStringAsFixed(0),
-                                      true,
-                                      widget.firstname.text,
-                                      widget.lastname.text,
-                                      // widget.citypicker.text,
-                                      cityValue,
-                                      widget.postalcode.text,
-                                      widget.phonenumber.text,
-                                      widget.note.text,
-                                      context);
+                                    widget.email.text,
+                                    widget.pateintname.text,
+                                    stateValue,
+                                    // widget.country.text,
+                                    widget.firstname.text,
+                                    widget.lastname.text,
+                                    widget.shippingaddress.text,
+                                    widget.shippingaddress.text,
+                                    // widget.citypicker.text,
+                                    cityValue,
+                                    widget.postalcode.text,
+                                    widget.phonenumber.text,
+                                    val!.toStringAsFixed(0),
+                                    true,
+                                    widget.firstname.text,
+                                    widget.lastname.text,
+                                    // widget.citypicker.text,
+                                    cityValue,
+                                    widget.postalcode.text,
+                                    widget.phonenumber.text,
+                                    widget.note.text,
+                                    context,
+                                  );
                               if (responseData != null) {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ShippingInfo(
-                                        responseData: responseData),
+                                    builder:
+                                        (context) => ShippingInfo(
+                                          responseData: responseData,
+                                        ),
                                   ),
                                 );
                               }
                             } else {
                               Map<String, dynamic>? responseData =
                                   await CreateOrder.Createneworder(
-                                      widget.email.text,
-                                      widget.pateintname.text,
-                                      stateValue,
-                                      widget.firstname.text,
-                                      widget.lastname.text,
-                                      widget.shippingaddress.text,
-                                      widget.billingaddress.text,
-                                      // widget.citypicker.text,
-                                      cityValue,
-                                      widget.postalcode.text,
-                                      widget.phonenumber.text,
-                                      val!.toStringAsFixed(0),
-                                      true,
-                                      widget.billingfname.text,
-                                      widget.billinglname.text,
-                                      // widget.billingcity.text,
+                                    widget.email.text,
+                                    widget.pateintname.text,
+                                    stateValue,
+                                    widget.firstname.text,
+                                    widget.lastname.text,
+                                    widget.shippingaddress.text,
+                                    widget.billingaddress.text,
+                                    // widget.citypicker.text,
+                                    cityValue,
+                                    widget.postalcode.text,
+                                    widget.phonenumber.text,
+                                    val!.toStringAsFixed(0),
+                                    true,
+                                    widget.billingfname.text,
+                                    widget.billinglname.text,
 
-                                      billingcityValue,
-                                      widget.billing_phone_number.text,
-                                      widget.billingpostalcode.text,
-                                      widget.note.text,
-                                      context);
+                                    // widget.billingcity.text,
+                                    billingcityValue,
+                                    widget.billing_phone_number.text,
+                                    widget.billingpostalcode.text,
+                                    widget.note.text,
+                                    context,
+                                  );
                               if (responseData != null) {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ShippingInfo(
-                                        responseData: responseData),
+                                    builder:
+                                        (context) => ShippingInfo(
+                                          responseData: responseData,
+                                        ),
                                   ),
                                 );
                               }
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent),
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                          ),
                           child: Text(
                             'Continue',
                             style: TextStyle(fontFamily: 'Humanist Sans'),
@@ -1344,13 +1484,13 @@ class _PersonalInforFormState extends State<PersonalInforForm> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
               ],
             ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 
   // A helper method to create a radio button with a label

@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   http:
   shared_preferences: ^2.5.3
-  fluttertoast:
+  fluttertoast: ^8.2.12
   get:
   responsive_sizer:
   flutter_spinkit:
@@ -61,7 +61,7 @@ dependencies:
   image_picker:
   url_launcher:
   lottie:
-  csc_picker: ^0.2.7
+#  csc_picker: ^0.2.7
   ansicolor: ^2.0.2
   maps_launcher: ^2.2.0
 #  flutter_phone_direct_caller: ^2.1.1
